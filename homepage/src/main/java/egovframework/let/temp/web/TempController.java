@@ -37,7 +37,28 @@ public class TempController {
 		model.addAttribute("resultList", resultList);
 		return "temp/TempSelectList";
 	}
-	/*
+	
+	//임시데이터 등록/수정
+	@RequestMapping(value = "/temp/tempRegist.do")
+	public String tempRegist(@ModelAttribute("searchVO") TempVO tempVO,
+		HttpServletRequest request, ModelMap model) throws Exception{
+		
+		TempVO result=new TempVO();
+		if(!EgovStringUtil.isEmpty(tempVO.getTempId())) {
+			result = tempService.selectTemp(tempVO);
+		}
+	    model.addAttribute("result", result);
+		
+		return "temp/TempRegist";
+	}
+	
+	//임시데이터 등록하기
+	@RequestMapping(value = "/temp/insert.do")
+	public String insert(@ModelAttribute("searchVO") TempVO searchVO, HttpServletRequest request, ModelMap model) throws Exception{
+		tempService.insertTemp(searchVO);
+		return "forward:/temp/selectList.do";
+	}
+	
 	//임시데이터 가져오기
 	@RequestMapping(value = "/temp/select.do")
 	public String select(@ModelAttribute("searchVO") TempVO searchVO, HttpServletRequest request, ModelMap model) throws Exception{
@@ -45,8 +66,25 @@ public class TempController {
 		model.addAttribute("result", result);
 		return "temp/TempSelect";
 	}
-	*/
 	
+	//임시데이터 수정하기
+	@RequestMapping(value = "/temp/update.do")
+	public String update(@ModelAttribute("searchVO")TempVO searchVO,
+		 HttpServletRequest request, ModelMap model) throws Exception{
+		
+		tempService.updateTemp(searchVO);
+		return "forward:/temp/selectList.do";
+	}
+	
+	//임시데이터 삭제하기
+	@RequestMapping(value = "/temp/delete.do")
+	public String delete(@ModelAttribute("searchVO") TempVO searchVO, 
+			HttpServletRequest request, ModelMap model) throws Exception{
+		
+		tempService.deleteTemp(searchVO);
+		return "forward:/temp/selectList.do";
+	}
+
 	/*
 	//임시데이터 등록/수정
 	@RequestMapping(value = "/temp/tempRegist.do")
