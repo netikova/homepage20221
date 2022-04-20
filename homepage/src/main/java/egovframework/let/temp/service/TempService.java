@@ -23,6 +23,9 @@ public interface TempService {
 	//임시데이터 삭제하기
 	public void deleteTemp(TempVO vo) throws Exception;
 	
+	//임시데이터 목록수
+	public int selectTempListCnt(TempVO vo) throws Exception;
+	
 	/*
 	//임시데이터 등록하기
 	public String insertTemp(TempVO vo) throws Exception;

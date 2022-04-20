@@ -53,6 +53,13 @@ public class TempServiceImpl extends EgovAbstractServiceImpl implements TempServ
     public void deleteTemp(TempVO vo) throws Exception{
     	tempMapper.deleteTemp(vo);
     }
+    
+    //임시데이터 목록수
+    public int selectTempListCnt(TempVO vo)throws Exception{
+    	return tempMapper.selectTempListCnt(vo);
+    }
+    
+    
     //등록하기는 void형식이기 때문에 받아올값이 없어서 null값을 리턴해준다.
 
     /*

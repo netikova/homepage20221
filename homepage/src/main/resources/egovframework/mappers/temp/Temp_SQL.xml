@@ -34,11 +34,18 @@
             TEMP_ID
             , TEMP_VAL
             FROM lettemp
+            LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
     </select>
     
     <delete id="deleteTemp" parameterType="egovframework.let.temp.service.TempVO">
          DELETE FROM lettemp
          WHERE TEMP_ID = #{tempId}
     </delete>
-
+    
+    <select id="selectTempListCnt" resultType="java.lang.Integer">
+        SELECT
+          COUNT(*) CNT
+        FROM lettemp
+    </select>
+    
 </mapper>
