@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.let.crud.service.impl.CrudMapper">
+<!-- mapper랑 연결해주는 namespace -->
+
+      <!--   변수를 받아오는 역할을 한다. 이 column은 property야-->
+    <resultMap id="crud" type="egovframework.let.crud.service.CrudVO">
+         <result property="CrudId" column="CRUD_ID"/>
+         <result property="CrudVal" column="CRUD_SJ"/>
+         <result property="CrudCn" column="CRUD_CN"/>
+         <result property="UserNm" column="USER_NM"/>
+         <result property="FrstregistPnttm" column="FRST_REGIST_PNTTM"/>    
+     </resultMap>
+    
+
+    
+   <select id="selectCrud" resultType="CrudVO">
+                       <!-- AS 를 써줘서 crudVO의 변수랑 일치시킨다. sql-mapper-config.xml-->
+        SELECT
+            CRUD_ID AS crudId 
+            , CRUD_SJ AS crudVal
+            , CRUD_CN AS crudCn
+            , USER_NM AS userNm 
+            , FRST_REGIST_PNTTM  AS frstregistPnttm
+            FROM LETCRUD
+            WHERE CRUD_ID = #{crudId}
+    </select>
+    
+   <!--  <select id="selectCrud" resultMap="crud">
+                         map을 써주면 위 crudVO에서 변수를 일일히 찾아주는 것을 줄여서 처리속도가 빠르다.
+        SELECT
+            CRUD_ID 
+            , CRUD_SJ 
+            , CRUD_CN 
+            , USER_NM  
+            , FRST_REGIST_PNTTM  
+            FROM LETCRUD
+            WHERE CRUD_ID = #{crudId}
+    </select> -->
+    
+    <insert id = "insertCrud" parameterType="egovframework.let.crud.service.CrudVO">
+       INSERT INTO LETCRUD(
+           CRUD_ID,CRUD_SJ,CRUD_CN,USER_NM,FRST_REGIST_PNTTM
+       ) VALUES(
+           #{crudId},#{crudSj},#{crudCn},#{userNm},(SELECT DATE_FORMAT(SYSDATE(),'%Y-%m-%d'))<!-- now() -->
+       )
+    </insert>
+    
+    <update id="updateCrud" parameterType="egovframework.let.crud.service.CrudVO">
+      UPDATE LETCRUD SET
+        CRUD_SJ = #{crudVal},
+        CRUD_CN = #{crudCn},
+        USER_NM = #{userNm},
+        FRST_REGIST_PNTTM = #{frstregistPnttm}        
+      WHERE CRUD_ID = #{crudId}
+    </update>
+    
+    <select id="selectCrudList" resultType="egovMap">
+    <!-- egovMap은 대문자를 소문자로 바꿔주고 _다음의 문자를 대문자로 바꿔준다. CRUD_ID-> crudID -->
+        SELECT
+            CRUD_ID
+            , CRUD_SJ
+            , USER_NM
+            , DATE_FORMAT(FRST_REGIST_PNTTM, '%Y-%m-%d') AS FRST_REGIST_PNTTM
+            FROM LETCRUD
+            ORDER BY CRUD_ID DESC
+            LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+            <!-- 변수를 받아서 페이지를 표현 -->
+      
+    </select>
+    
+    <delete id="deleteCrud" parameterType="egovframework.let.crud.service.CrudVO">
+         DELETE FROM LETCRUD
+         WHERE CRUD_ID = #{crudId}
+    </delete>
+    
+    <select id="selectCrudListCnt" resultType="java.lang.Integer">
+        SELECT
+          COUNT(*) CNT
+        FROM LETCRUD
+    </select> 
+    
+</mapper>
