@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-
+//imple을 쓰는 이유는 에러가 발생시 transaction(트랜잭션)을 이용해 복구(rollback)하기 위해서다.
 @Service("boardService")
 public class BoardServiceImpl extends EgovAbstractServiceImpl implements BoardService {
     /*
@@ -47,6 +47,27 @@ public class BoardServiceImpl extends EgovAbstractServiceImpl implements BoardSe
     	boardMapper.insertBoard(vo);
     	
     	return id;
+    }
+    
+    //게시물 상세정보
+    //다수의 작업이 들어올 경우 에러 발생시 복구하는 구간
+    @Override
+    public BoardVO selectBoard(BoardVO vo) throws Exception{
+    	//조회수 업
+    	boardMapper.updateViewCnt(vo);
+    	return boardMapper.selectBoard(vo);
+    }
+    
+    //게시물 수정하기
+    @Override
+    public void updateBoard(BoardVO vo) throws Exception{
+    	boardMapper.updateBoard(vo);
+    }
+    
+    //게시물 삭제하기
+    @Override
+    public void deleteBoard(BoardVO vo) throws Exception{
+    	boardMapper.deleteBoard(vo);
     }
 	
 	

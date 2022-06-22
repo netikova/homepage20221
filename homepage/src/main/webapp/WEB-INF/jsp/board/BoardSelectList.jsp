@@ -104,13 +104,22 @@
     </tr>
 </c:forEach>
 
-<%-- 일반 글 --%>
+<%-- 일반 글 --%>                              <!-- 변수 -->
 <c:forEach var="result" items="${resultList}" varStatus="status">
     <tr>
         <td class="num">
+            <!--   위에서부터  내림차순으로 글 번호를 매기는 순서 -->
+                  <!--  페이지의 첫번째 숫자 구하기 :총수-((현재 페이지 번호-1)*한페이지당 게시되는 게시물 건수)- 1부터 시작순서 -->
             <c:out value="${paginationInfo.totalRecordCount - ((searchVO.pageIndex-1) * searchVO.pageUnit) - (status.count -1)}" />
         </td>
         <td class="tit">
+            <c:if test="${not empty result.atchFileNm}">
+                <c:url var="thumbUrl" value="/cmm/fms/getThumbImage.do">
+                    <c:param name="thumYn" value="Y"/>
+                    <c:param name="atchFileNm" value="${result.atchFileNm}"/>
+                </c:url>
+                <img src="${thumbUrl}" alt=""/>
+            </c:if>
             <c:url var="viewUrl" value="/board/select.do${_BASE_PARAM}">
                 <c:param name="boardId" value="${result.boardId}"/>
                 <c:param name="pageIndex" value="${searchVO.pageIndex}"/>

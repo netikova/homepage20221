@@ -167,8 +167,7 @@
 			<groupId>com.ibm.icu</groupId>
 			<artifactId>icu4j</artifactId>
 			<version>53.1</version>
-		</dependency>
-	</dependencies>
+		</dependency>	
     <!-- Validator -->
     <dependency>
         <groupId>javax.validation</groupId>
@@ -180,6 +179,14 @@
         <artifactId>hibernate-validator</artifactId>
         <version>5.2.4.Final</version> 
     </dependency>
+    <!-- 썸네일 -->
+    <dependency>
+        <groupId>net.coobird</groupId>
+        <artifactId>thumbnailator</artifactId>
+        <version>0.4.2</version> 
+    </dependency>
+    </dependencies>
+    
     <build>
         <defaultGoal>install</defaultGoal>
         <directory>${basedir}/target</directory>
