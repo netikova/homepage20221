@@ -157,8 +157,7 @@ public class EgovImageProcessController extends HttpServlet {
     public void getThumbImage(ModelMap model, HttpServletRequest request,
     		HttpServletResponse response) throws Exception{
     	
-    	String fileStorePath = EgovStringUtil.isEmpty(request.getParameter("fileStorePath")) ?
-    			"board.fileStorePath" : request.getParameter("fileStorePath");
+    	String fileStorePath = EgovStringUtil.isEmpty(request.getParameter("fileStorePath")) ? "board.fileStorePath" : request.getParameter("fileStorePath");
     	
     	String atchFileNm = request.getParameter("atchFileNm");
     	String thumbYn = request.getParameter("thumbYn"); 
