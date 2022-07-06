@@ -15,35 +15,82 @@
 <title>프로젝트명</title>
 <link href="/asset/front/css/style.css" rel="stylesheet" />
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<script src='https://code.jquery.com/jquery-1.12.4.min.js'></script><script  src="/asset/front/js/script.js"></script>
+
 </head>
 <body>
 
- <header>
-        <!-- <div id = head_img>
-            <img src="/asset/front/images/alcohol.jpg">
-            <h1>전통 술</h1>
-        </div> -->
+ <div id="container">     
+	 <header>
+	            <div id = head_img>
+	            <!-- <img src="images/alcohol.jpg"> -->
+	            </div> 
+	            <h1 class="logo"><img src="/asset/front/images/logo.jpg" alt="">전통 주</h1>
+	            <div class="menu-toggle-btn"><img src="/asset/front/images/menu_bar.png" alt=""></div> 
+	      
                 
-    </header>
-    <div id="container">
-        
+    </header> 
+      <section id="intro">    
         <nav>
             <ul id="menu-nav">
-                <li><a href="#intro">INTRO</a></li>
-                <li><a href="#profile">PROFILE</a></li>
+              
+                <li><a href="#intro" class="scroll_move">홈</a></li>
+                <li><a href="#content1" class="scroll_move">우리술정의</a></li>
                 <!-- <li><a href="#education">EDUCATION</a></li> -->
-                <li><a href="#skill">SKILLS</a></li>
-                <li><a href="#map">MAP</a></li>
-                <li><a href="#contact">CONTACT</a></li>        
-                <li id="member"><a href="asdfdsf.sdfdsf" target = "_blank">JOIN</a></li>
-                <li id="login"><a href="http://localhost/index.do" target = "_blank">LOGIN</a></li>
+                <li><a href="#content2" class="scroll_move">술의종류</a></li>
+                <li><a href="#content3" class="scroll_move">서비스</a></li>
+                <li><a href="#content4" class="scroll_move">술전시관</a></li>                        
+                
+                <li id="board"><a href="/board/selectList.do">게시판</a></li>     
+                <!-- <li id="member"><a href="asdfdsf.sdfdsf" target = "_blank">JOIN</a></li> -->
+                
+                <li id="login">
+                <c:choose>
+				   <c:when test="${empty USER_INFO.id}">
+				      <a href="/login/egovLoginUsr.do" class="login">로그인</a>
+				   </c:when>
+				   <c:otherwise>
+				       <a href="/login/actionLogout.do"><c:out value="${USER_INFO.name}">님 로그아웃</c:out></a>				      
+				   </c:otherwise>
+				</c:choose>
+				</li>
+                <%-- <a href='${pageContext.request.contextPath}/member/add.do'>회원추가</a> --%>
+                          
             </ul>   
            
-        </nav>
-        <section id="intro"> 
+        </nav>       
+  
+       
                      
                     
         </section>
+        <!-- <ul class="amount">
+            <li>
+              <div>
+                <div class="contents1">옥탑에 등록된 건 수</div>
+                <div class="result">38,210개</div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="contents1">예약현황</div>
+                <div class="result">15,100</div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="contents1">옥탑 좋아요수</div>
+                <div class="result">100,000+</div>
+              </div>
+            </li>
+            <li>
+                <div>
+                  <div class="contents1">옥탑 활성</div>
+                  <div class="result">57,221,084</div>
+                </div>
+            </li>
+          </ul> -->
         <section id="content1">        
             <div class="content1_text">
                 <h1>우리술의 정의</h1>                
@@ -79,38 +126,38 @@
           <ul class="icons">
             <li>
                 <div class="icon_img">
-                    <img src="/asset/front/images/soju.jpg">
+                    <img src="/asset/front/images/soju1.png">
                 </div>
                 <div class="icons_text1"><h3>증류주</h3></div>
                 <div class="icons-text2">
                     이 술은...전통적으로....
                 </div>
                 <div class="more">
-                    MORE
+                    더보기
                 </div>
             </li>
             <li>
                 <div class="icon_img">
-                    <img src="/asset/front/images/mak.jpg">
+                    <img src="/asset/front/images/mak1.png">
                 </div>
                 <div class="icons_text1"><h3>양조주</h3></div>
                 <div class="icons-text2">
                     이 술은...전통적으로....
                 </div>
                 <div class="more">
-                    MORE
+                    더보기
                 </div>
             </li>
             <li>
                 <div class="icon_img">
-                    <img src="/asset/front/images/me.jpg">
+                    <img src="/asset/front/images/po1.png">
                 </div>
                 <div class="icons_text1"><h3>혼성주</h3></div>
                 <div class="icons-text2">
                     이 술은...전통적으로....
                 </div>
                 <div class="more">
-                    MORE
+                    더보기
                 </div>
             </li>
           </ul>
@@ -122,7 +169,7 @@
           </div>
             <div class="service">
               <div class="alcohol_photo">
-                <img src="/asset/front/images/alcohol4.jpg">
+                <img src="/asset/front/images/alcohol4.png">
               </div>
               <div class="content3_text2">
                  <h2>이것은 전통 술로써, 술이야?</h2>
@@ -134,7 +181,10 @@
                  가나다라마바사아자차카타파하. <br>
                  가나다라마바사아자차카타파하 가나다라마바사아자차카타파하<br>
                  가나다라마바사아자차카타파하 가나다라마바사아자차카타파하<br>
-              </div>   
+              </div>                
+            <!-- <div class="content3_bg">
+                <img src="/asset/front/images/character.png">
+            </div> -->
             </div>         
         </section>
         <section id="content4">
@@ -142,12 +192,197 @@
            <div class="content4_text1">
                 술 제조 지역...
            </div>
-           <div class="location">
-             <a href="https://www.sulmuseum.kr:444/index.9is?contentUid=ff8080814d980555014d9848fea30054" target = "_blank"><img src="/asset/front/images/icon-alcohol.png"></a>
-             <a href="http://urisul.net/"><img src="/asset/front/images/icon-alcohol.png" target = "_blank"></a>
-             <a href="https://blog.naver.com/bambi_0202/222162396117" target = "_blank"><img src="/asset/front/images/icon-alcohol.png"></a>            
+          <div class="service2">
+           <div id="content4_img">
+            <img src="/asset/front/images/map.png">
+           </div> 
+           <!-- <div class="location">
+             <a href="https://www.sulmuseum.kr:444/index.9is?contentUid=ff8080814d980555014d9848fea30054" target = "_blank"><img src="asset/front/images/icon-alcohol.png"></a>
+             <a href="http://urisul.net/"><img src="asset/front/images/icon-alcohol.png" target = "_blank"></a>
+             <a href="https://blog.naver.com/bambi_0202/222162396117" target = "_blank"><img src="asset/front/images/icon-alcohol.png"></a>            
+            </div> -->
+            <div class="place-list">
+                <ul>
+                    <!-- <li>
+                        <div class="p-top">
+                            <div class="num gyeonggi">1</div>
+                            <div class="subject">산머루 농원</div>
+                            <div class="guide-list"></div>
+                        </div>
+                        <div class="p-body">
+                            <div class="info">
+                                <dl>
+                                    <dt>주소</dt>
+                                    <dd>경기 파주시 적성면 객현리 67-1</dd>
+                                </dl>
+                                <dl>
+                                    <dt>주종</dt>
+                                    <dd>과실주</dd>
+                                </dl>
+                                <dl>
+                                    <dt>연락처"</dt>
+                                    <dd>031-958-4558</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </li> -->
+                    <li>
+                        <div class="table-top">
+                            <div class="table-num">1</div>
+                            <div class="subject">한국 폴리텍대학</div>
+                            <div class="guide-list"></div>
+                        </div>
+                        <div class="table-body">
+                            <div class="info">
+                                 <dl>
+                                    <dt>주소</dt>
+                                    <dd>대전 광역시 동구 352-21</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>주종</dt>
+                                    <dd>과실주</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>연락처</dt>
+                                    <dd>042-1234-5678</dd>
+                                 </dl>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="table-top">
+                            <div class="table-num">2</div>
+                            <div class="subject">대전 폴리텍대학</div>
+                            <div class="guide-list"></div>
+                        </div>
+                        <div class="table-body">
+                            <div class="info">
+                                 <dl>
+                                    <dt>주소</dt>
+                                    <dd>대전 광역시 동구 352-21</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>주종</dt>
+                                    <dd>과실주</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>연락처</dt>
+                                    <dd>042-1234-5678</dd>
+                                 </dl>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="table-top">
+                            <div class="table-num">3</div>
+                            <div class="subject">전주 폴리텍대학</div>
+                            <div class="guide-list"></div>
+                        </div>
+                        <div class="table-body">
+                            <div class="info">
+                                 <dl>
+                                    <dt>주소</dt>
+                                    <dd>대전 광역시 동구 352-21</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>주종</dt>
+                                    <dd>과실주</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>연락처</dt>
+                                    <dd>042-1234-5678</dd>
+                                 </dl>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="table-top">
+                            <div class="table-num">4</div>
+                            <div class="subject">부산 폴리텍대학</div>
+                            <div class="guide-list"></div>
+                        </div>
+                        <div class="table-body">
+                            <div class="info">
+                                 <dl>
+                                    <dt>주소</dt>
+                                    <dd>대전 광역시 동구 352-21</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>주종</dt>
+                                    <dd>과실주</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>연락처</dt>
+                                    <dd>042-1234-5678</dd>
+                                 </dl>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="table-top">
+                            <div class="table-num">5</div>
+                            <div class="subject">서울 폴리텍대학</div>
+                            <div class="guide-list"></div>
+                        </div>
+                        <div class="table-body">
+                            <div class="info">
+                                 <dl>
+                                    <dt>주소</dt>
+                                    <dd>대전 광역시 동구 352-21</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>주종</dt>
+                                    <dd>과실주</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>연락처</dt>
+                                    <dd>042-1234-5678</dd>
+                                 </dl>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="table-top">
+                            <div class="table-num">6</div>
+                            <div class="subject">경기 폴리텍대학</div>
+                            <div class="guide-list"></div>
+                        </div>
+                        <div class="table-body">
+                            <div class="info">
+                                 <dl>
+                                    <dt>주소</dt>
+                                    <dd>대전 광역시 동구 352-21</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>주종</dt>
+                                    <dd>과실주</dd>
+                                 </dl>
+                                 <dl>
+                                    <dt>연락처</dt>
+                                    <dd>042-1234-5678</dd>
+                                 </dl>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+                  
+
             </div>
+           </div>
         </section>
+        <!-- <section id="content5">         
+          <div class="service3">
+            <div class="content5_img">
+                <img src="/asset/front/images/water.png">                
+            </div>               
+          </div>
+        </section> -->
         <footer class="footer">
             <div>한국 폴리텍 대학</div>
             <div>
@@ -157,40 +392,39 @@
             </div>
         </footer>
     </div>
-  <c:choose>
-    <c:when test="${empty USER_INFO.id}">
-       <a href="/login/egovLoginUsr.do" class="login">로그인</a>
-    </c:when>
-    <c:otherwise>
-        <a href="/login/actionLogout.do"><c:out value="${USER_INFO.name}"/>님 로그아웃</a>
-    </c:otherwise>
- </c:choose> 
- 
- <div class="dim"></div>
- <!--  로그인 -->
- <div class="layer-popup layer-login" style="display:none;">
-    <header class="layer-header">
-        <span class="logo">
-            <span class="img-logo">한국폴리텍대학 대전캠퍼스 스마트소프트웨어학과</span>
-        </span>
-        <button type="button" class="layer-close"><span>팝업닫기</span></button>
-    </header>
-    <div class="layer-body">
-        <form action="/login/actionLogin.do" id="frmLogin" name="frmLogin" method="post" onsubmit="return vali()">
-            <input type="hidden" name="userSe" value="USR" />
-            <fieldset>
-                <legend>로그인을 위한 아이디/비밀번호 입력</legend>
-                <div class="ipt-row">
-                   <input type="text" id="loginId" name="id" placeholder="아이디" required="required">
-                </div>
-                <div class="ipt-row">
-                   <input type="password" id="loginPw" name="password" placeholder="비밀번호" required="required">
-                </div>
-                <button type="submit" class="btn-login"><span>로그인</span></button>
-            </fieldset>
-         </form>
-    </div>
- </div>
+<%-- <c:choose>
+   <c:when test="${empty USER_INFO.id}">
+      <a href="/login/egovLoginUsr.do" class="login">로그인</a>
+   </c:when>
+   <c:otherwise>
+       <a href="/login/actionLogout.do"><c:out value="${USER_INFO.name}">님 로그아웃</c:out></a>
+   </c:otherwise>
+</c:choose> --%>
+
+<!-- 로그인 -->
+	<div class="layer-popup layer-login" style="display:none;">
+		<header class="layer-header">
+			<span class="logo">
+				<span class="img-logo">한국폴리텍대학 대전캠퍼스 스마트소프트웨어학과</span>
+			</span>
+			<button type="button" class="layer-close"><span>팝업 닫기</span></button>
+		</header>
+		<div class="layer-body">
+			<form action="/login/actionLogin.do" id="frmLogin" name="frmLogin" method="post" onsubmit="return vali()">
+				<input type="hidden" name="userSe" value="USR"/>
+				<fieldset>
+					<legend>로그인을 위한 아이디/비밀번호 입력</legend>
+					<div class="ipt-row">
+						<input type="text" id="loginId" name="id" placeholder="아이디" required="required">
+					</div>
+					<div class="ipt-row">
+						<input type="text" id="loginPw" name="password" placeholder="비밀번호" required="required">
+					</div>
+					<button type="submit" class="btn-login"><span>로그인</span></button>
+				</fieldset>
+			</form>
+		</div>
+	</div> 
  
  <script>
  $(document).ready(function(){
