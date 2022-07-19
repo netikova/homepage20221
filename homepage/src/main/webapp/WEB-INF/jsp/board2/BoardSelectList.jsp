@@ -75,7 +75,7 @@
      </div>
      
      <%-- 목록영역 --%>
-     <div id="bbs_wrap">
+      <%-- <div id="bbs_wrap">
         <div class="total">
                         총 게시물
            <strong><c:out value="${paginationInfo.totalRecordCount}"/></strong>건 | 현재페이지 <strong><c:out value="${paginationInfo.currentPageNo}"/></strong>/<c:out value="${paginationInfo.totalPageCount}"/>
@@ -91,9 +91,9 @@
                          <th class="hits" scope="col">조회수</th>
                      </tr>
                 </thead>
-             <tbody>
+             <tbody>  --%>
 <%-- 공지 글 --%>
-<c:forEach var="result" items="${noticeResultList}" varStatus="status">
+<%-- <c:forEach var="result" items="${noticeResultList}" varStatus="status">
    <tr class="notice">
        <td class="num"><span class="label-bbs spot">공지</span></td>
        <td class="tit">
@@ -113,17 +113,16 @@
            <c:out value="${result.inqireCo}"/>
        </td>
     </tr>
-</c:forEach>
+</c:forEach> --%>
 
 <%-- 일반 글 --%>                              <!-- 변수 -->
-<c:forEach var="result" items="${resultList}" varStatus="status">
+<%-- <c:forEach var="result" items="${resultList}" varStatus="status">
     <tr>
-        <td class="num"> <!-- 페이지 -->
-            <!--   위에서부터  내림차순으로 글 번호를 매기는 순서 -->
-                  <!--  페이지의 첫번째 숫자 구하기 :총수-((현재 페이지 번호-1)*한페이지당 게시되는 게시물 건수)- 1부터 시작순서 -->
+        <td class="num"> 
+       
             <c:out value="${paginationInfo.totalRecordCount - ((searchVO.pageIndex-1) * searchVO.pageUnit) - (status.count -1)}" />
         </td>
-        <td class="tit"> <!-- 글제목 -->
+        <td class="tit"> 
             <c:if test="${not empty result.atchFileNm}">
                 <c:url var="thumbUrl" value="/cmm/fms/getThumbImage.do">
                     <c:param name="thumYn" value="Y"/>
@@ -150,10 +149,10 @@
  </td>
  <td class="hits" date-cell-header="조회수: "><c:out value="${result.inqireCo}"/></td>
  </tr>
- </c:forEach>
+ </c:forEach> --%>
  
                        <%-- 게시 글이 없을 경우 --%>
-                       <c:if test="${fn:length(resultList) == 0}">
+                   <%--     <c:if test="${fn:length(resultList) == 0}">
                           <tr class="empty"><td colspan="5">검색 데이터가 없습니다.</td></tr>
                        </c:if>
                        </tbody>
@@ -169,7 +168,7 @@
                        <a href="/board2/boardRegist.do" class="btn spot">
                             <i class="ico-check-spot"></i> 글쓰기
                        </a>
-                   </div>
+                   </div> --%>
                 </div>
              </div>
              <script>

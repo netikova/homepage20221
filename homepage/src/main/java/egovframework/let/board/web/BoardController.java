@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -43,6 +44,7 @@ public class BoardController {
 	
 	@Resource(name = "fileMngUtil")
 	private FileMngUtil fileUtil;
+
 
 	//Board 목록 가져오기
 	@RequestMapping(value = "/board/selectList.do")       //객체     변수
@@ -71,7 +73,7 @@ public class BoardController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 		
-		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();	
 		model.addAttribute("USER_INFO", user);
 		
 		return "board/BoardSelectList";

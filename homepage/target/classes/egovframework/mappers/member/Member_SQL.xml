@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.let.member.service.impl.MemberMapper">
+
+   <!-- <resultMap id="member" type="egovframework.let.member.service.MemberVO">
+         <result property="memberId" column="Member_ID"/>
+         <result property="memberPass" column="Member_Pass"/>
+         <result property="memberName" column="Member_Name"/>
+   </resultMap> -->
+   
+   <resultMap id="member" type="egovframework.let.member.service.MemberVO">
+         <result property="memberId" column="EMPLYR_ID"/>         
+         <result property="memberName" column="USER_NM"/>
+         <result property="memberPass" column="PASSWORD"/>
+   </resultMap>
+   
+  <!-- <insert id = "insertMember" parameterType="egovframework.let.member.service.MemberVO">
+      INSERT INTO member(
+           Member_ID,
+           Member_Pass,
+           Member_Name           
+      )  VALUES(
+           #{memberId},
+           #{memberPass},
+           #{memberName}
+      )     
+   </insert>  -->
+   
+   <insert id = "insertMember" parameterType="egovframework.let.member.service.MemberVO">
+      INSERT INTO LETTNEMPLYRINFO(
+           EMPLYR_ID,
+           USER_NM,
+           PASSWORD           
+      )  VALUES(
+           #{memberId},
+           #{memberName},
+           #{memberPass}
+      )     
+   </insert> 
+   
+   <!-- INSERT INTO LETTNEMPLYRINFO (EMPLYR_ID,USER_NM,PASSWORD) VALUES('AAA', '닉네임', 1234); -->
+</mapper>

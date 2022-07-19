@@ -80,7 +80,7 @@
             </choose>
         </where>
     </sql> 
-    
+                                           
     <insert id="insertBoard" parameterType="egovframework.let.board.service.BoardVO">
         INSERT INTO BOARD(
             BOARD_ID

@@ -35,7 +35,7 @@ div ~ #bbs_wrap { margin-top:30px; }
 #bbs_wrap #bbs_search_book .bbs_search_bg table.chart1 tr:first-child td { padding-top:15px; }
 #bbs_wrap #bbs_search_book .bbs_search_bg table.chart1 tr:last-child th,
 #bbs_wrap #bbs_search_book .bbs_search_bg table.chart1 tr:last-child td { padding-bottom:15px; }
-#bbs_search { margin-bottom:20px;}
+#bbs_search { margin-bottom:20px; height: 54px;}
 #bbs_search fieldset { }
 #bbs_search fieldset > * { display:inline-block; }
 
@@ -301,6 +301,7 @@ table + .btn_r { margin-top:20px; }
 	font-weight:bold;
 	font-size:13px;
     border-radius:2px;
+    margin-bottom:30px;
 }
 .bbtn_normal a, 
 .bbtn_normal input, 

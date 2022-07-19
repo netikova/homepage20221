@@ -10,7 +10,7 @@
 	            <div id = head_img>
 	            <!-- <img src="images/alcohol.jpg"> -->
 	            </div> 
-	            <h1 class="logo"><img src="/asset/front/images/logo.jpg" alt="">전통 주</h1>
+	            <a href="/index.do"><h1 class="logo"><img src="/asset/front/images/logo.jpg" alt=""></a>전통 주</h1>
 	            <div class="menu-toggle-btn"><img src="/asset/front/images/menu_bar.png" alt=""></div> 
 	      
                 
